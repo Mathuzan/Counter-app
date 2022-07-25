@@ -10,6 +10,8 @@ import Home from "./Home";
 import { Component } from "react";
 import ImageRetrive from "./ImageRetrive";
 
+import "./app.css";
+
 function App() {
   return (
     <div>
@@ -17,7 +19,7 @@ function App() {
       <Router>
         <Routes>
           <Route exact path="/" element={<Home />}></Route>
-          <Route exact path="/displayImg" element={<DisplayImage />}></Route>
+          <Route exact path="/displayImg" element={<DisplayImage />}></Route> 
           {/* <Route exact path="/component  " element={<Component />}></Route> */}
           <Route exact path="/component" element={<ImageRetrive />}></Route>
         </Routes>

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { FadeLoader } from "react-spinners";
 
 const ImageRetrive = () => {
   useEffect(() => {
@@ -6,6 +7,14 @@ const ImageRetrive = () => {
   });
 
   const [image, setImage] = useState("");
+  const [ loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(true)
+    setTimeout(() => {
+      setLoading(false)
+    }, 8000)
+  }, [])
 
   const getImageUrl = () => {
 
@@ -30,7 +39,11 @@ const ImageRetrive = () => {
   return (
     <div>
       <img src={image} height={500} width={500} />
-
+      <FadeLoader
+      size={50}
+      color={"#123abc"}
+      loading={loading}
+      />
     </div>
   );
 };
