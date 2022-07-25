@@ -43,9 +43,6 @@ const Home = () => {
               <Link to="/component">
                 <button className="btn btn-secondary mx-3">API Navigate</button>
               </Link>
-              <Link to="/">
-                <button className="btn btn-secondary mx-3"> Return </button>
-              </Link>
             </div>
           </div>
         </div>
