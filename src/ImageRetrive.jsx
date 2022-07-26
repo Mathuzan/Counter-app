@@ -7,17 +7,17 @@ const ImageRetrive = () => {
   });
 
   const [image, setImage] = useState("");
-  const [ loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [post, setPost] = useState(null);
 
   useEffect(() => {
-    setLoading(true)
+    setLoading(true);
     setTimeout(() => {
-      setLoading(false)
-    }, 8000)
-  }, [])
+      setLoading(false);
+    }, 8000);
+  }, []);
 
   const getImageUrl = () => {
-
     var fetchUrl =
       "https://cloudflare-ipfs.com/ipfs/QmfMKDqPWR833dMfGkW38usYS9GsGK2v1t3SF2aWrYZtHz";
     fetch(fetchUrl, {
@@ -31,6 +31,10 @@ const ImageRetrive = () => {
         console.log(resjson);
         setImage(resjson.image);
       })
+      then(Response => {
+        const (body)=Response
+        setPost(body)
+      })
       .catch((error) => {
         console.error("Error:", error);
       });
@@ -39,11 +43,11 @@ const ImageRetrive = () => {
   return (
     <div>
       <img src={image} height={500} width={500} />
-      <FadeLoader
-      size={50}
-      color={"#123abc"}
-      loading={loading}
-      />
+
+      <FadeLoader size={50} color={"#123abc"} loading={loading} />
+      {post? post : <Backdrop className={classes.backdrop} open>
+        <FadeLoader size={50} color={"#123abc"} loading={loading} />
+      </Backdrop>}
     </div>
   );
 };
