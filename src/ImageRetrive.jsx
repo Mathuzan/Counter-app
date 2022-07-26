@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { FadeLoader } from "react-spinners";
 
+
+// Adding page spinner to the page.
 const ImageRetrive = () => {
   useEffect(() => {
     getImageUrl();
