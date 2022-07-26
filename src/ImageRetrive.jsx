@@ -7,24 +7,26 @@ const ImageRetrive = () => {
   });
 
   const [image, setImage] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const url =
-      "https://cloudflare-ipfs.com/ipfs/QmfMKDqPWR833dMfGkW38usYS9GsGK2v1t3SF2aWrYZtHz";
+    // const url =
+    //   "https://cloudflare-ipfs.com/ipfs/QmfMKDqPWR833dMfGkW38usYS9GsGK2v1t3SF2aWrYZtHz";
 
-    const fetchData = async () => {
-      setLoading(true)
-      try {
-        const response = await fetch(url);
-        const json = await response.json();
-        console.log(json);
-      } catch (error) {
-        console.log("error", error);
-      }
-    };
+    // const fetchData = async () => {
+    //   try {
+    //     const response = await fetch(url);
+    //     const json = await response.json();
+    //     json.then(setLoading(true))
+    //     console.log(json);
+    //   } catch (error) {
+    //     console.log("error", error);
+    //   }
 
-    fetchData();
+    // };
+
+    // fetchData();
+    getImageUrl();
   }, []);
 
   const getImageUrl = () => {
@@ -40,6 +42,7 @@ const ImageRetrive = () => {
       .then((resjson) => {
         console.log(resjson);
         setImage(resjson.image);
+        setLoading(false)
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -47,10 +50,15 @@ const ImageRetrive = () => {
   };
 
   return (
-    <div>
-      <img src={image} height={500} width={500} />
-      <FadeLoader size={50} color={"#123abc"} loading={loading} />
-    </div>
+    <>
+      {loading && loading == true ? (
+        <FadeLoader size={50} color={"#123abc"} loading={loading} />
+      ) : (
+        <div>
+          <img src={image} height={500} width={500} />
+        </div>
+      )}
+    </>
   );
 };
 
