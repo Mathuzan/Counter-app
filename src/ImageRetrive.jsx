@@ -10,22 +10,6 @@ const ImageRetrive = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // const url =
-    //   "https://cloudflare-ipfs.com/ipfs/QmfMKDqPWR833dMfGkW38usYS9GsGK2v1t3SF2aWrYZtHz";
-
-    // const fetchData = async () => {
-    //   try {
-    //     const response = await fetch(url);
-    //     const json = await response.json();
-    //     json.then(setLoading(true))
-    //     console.log(json);
-    //   } catch (error) {
-    //     console.log("error", error);
-    //   }
-
-    // };
-
-    // fetchData();
     getImageUrl();
   }, []);
 
